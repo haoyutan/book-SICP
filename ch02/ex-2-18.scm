@@ -1,0 +1,11 @@
+(define (my:reverse z)
+  (if (null? z)
+      '()
+      (append (my:reverse (cdr z)) (list (car z)))))
+
+(define (main-ex-2-18)
+  (define z (list 1 4 9 16 25))
+  (display z)
+  (newline)
+  (display (my:reverse z))
+  (newline))

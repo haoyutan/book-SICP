@@ -1,0 +1,21 @@
+(define (accumulate op initial sequence)
+  (if (null? sequence)
+      initial
+      (op (car sequence)
+          (accumulate op initial (cdr sequence)))))
+
+(define (count-leaves t)
+  (accumulate + 0 (map (lambda (tree)
+                         (if (pair? tree)
+                             (count-leaves tree)
+                             1))
+                       t)))
+
+(define (main-ex-2-35)
+  (define tree (list (list 1 2) (list 3 (list 4 5)) (list 6)))
+  (display "tree=")
+  (display tree)
+  (newline)
+  (display "(count-leaves tree)=")
+  (display (count-leaves tree))
+  (newline))
